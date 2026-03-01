@@ -1,0 +1,16 @@
+name: Bot Pago Mensual
+
+on:
+  schedule:
+    - cron: '0 9 8 * *'  # Cada día 8 del mes a las 9 AM
+
+jobs:
+  enviar-mensaje:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install httpx
+      - run: python bot.py
